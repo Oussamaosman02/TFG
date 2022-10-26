@@ -1,0 +1,52 @@
+\documentclass[a4paper]{article}
+
+\usepackage[spanish]{babel}
+
+\title{ASIeR}
+\author{Amalio}
+\date{\today}
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \section[Idea]{Intraducción a la idea}
+    \paragraph{}
+    La idea tecnológica de este proyecto es construir una web,
+    que a la vez sea instalable en el móvil (PWA) con funciones de notificación,
+    base de datos y usando la librería de componentes de Material UI, inspirada en la filosofía
+    Material Design desarrollado por Google.
+    \paragraph{}
+    Aparte de esto, la idea general es construir una web/app 
+    totalmente útil para difundir la información relevante de clase, 
+    así como fechas de exámenes y tareas.
+    \section[Tecnologías]{Tecnologías a usar}
+    \subsection[Next Js]{NextJs(React)}
+    \paragraph{}
+    Esta web/app estará básicamente construida en\\ NextJs (12)
+     de Vercel, que trabaja sobre React (18) 
+    creado y mantenido por Meta (Facebook).Este 
+    framework nos permitirá ahorra tiempo de carga gracias a su
+    renderizado desde el servidor (SSR) y a su arquitectura de 
+    una sola página (SPA) lo que dará dinamismo.
+    \subsection[Next-PWA]{next-pwa}
+    \paragraph{}
+    Next-Pwa es un módulo npm de javascript específico para NextJs que nos 
+    permitirá crear la PWA de forma muy rápida, sencilla y sin mucha configuración extra.
+    \subsection[Web-Push]{web-push}
+    \paragraph{}
+    Este también es un módulo de javascript enfocado a manejar las notificaciones emergentes o "push" 
+    que envía la web al dispositivo.Gracias a este módulo, conseguiremos eso usando la api interna del 
+    navegador, sin tener que usar ningún servicio externo.
+    \subsection[MongoDB]{MongoDB}
+    \paragraph{}
+    También hemos comentado que usaremos una base de datos, en este caso es MongoDB aunque 
+    no se descartaría usar una que sea SQL como Postgres (Supabase).
+    \subsection[Mongoose]{Mongoose}
+    \paragraph{}
+    Otro módulo npm que sirve para manejar MongoDB con sus drivers sin tener que hacerlo 
+    nosotros mismos y así simplificarlo todo.
+    \subsection[MUI]{Materila UI}
+    \paragraph{}
+    Esta librería de interfaces de usuario para React,\\ basada en la idea del Material Design 
+    dará una apariencia similar a las apps de google y por tanto más familiar y conocida.
+
+\end{document}
