@@ -89,5 +89,30 @@ archivos innecesarios.
 Añadir una notificación automática cuando quede menos de dos días para un examen o un día para
 una tarea.
 
+\paragraph{autenticación}
+Para la autenticación general usaremos la base de datos de MongoDB, donde los usarios tendrán un nombre 
+y una contraseña específica con ese nombre.También, podría considerar usar Auth0, una librería específica
+para ello.\\ Aparte, el nombre se guardará en el almacenamiento local para no tener que llamar todo el rato
+a la base da datos y así evitar consumir recursos.
+\subparagraph{}
+Una vez "registrados", habrá un renderizado condicional, es decir, la página de inicio de sesión o registro 
+solo se mostrará mientras no haya almacenado en memoria un nombre, en cuanto inicien sesión no volverá a 
+aparecerles el login.
 
+\paragraph{auth admins}
+Para los administradores, debo usar un método disntinto de autenticación, ya que sus credenciales si 
+deben ser 100\% secretas, por eso para ellos puede que si use Auth0 o les deje crear sus propios usuarios 
+y contraseñas, pero siempre será un registro controlado por mi.Una idea sería crear una colección distinta
+solo para ellos y crear una forma de añadirlos rápidamente con un simple form de dos inputs de tipo password. 
+Entonces ellos (en mi presencia) irán añadiendo su usuario y contraseña de administrador enviandolo a la base 
+de datos y una vez eso, ya estaría añadida dicha información, con una contraseña 
+y usuario que solo ellos saben. 
+
+\paragraph{Pupurrí de secciones }
+Aquí dejo un listado de ideas que me parecen interesantes e implementables:\\
+\begin{itemize}
+    \item Sección de asignaturas con videos explicativos (yt)
+    \item Sección de "resumenes" para cada exámen, por si alguien quiere aportar su resumen a la clase 
+    \item Botón de "estoy en Discord" para avisar cuando alguien está en el discord de la clase
+\end{itemize}
 \end{document}
