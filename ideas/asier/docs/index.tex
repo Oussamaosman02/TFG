@@ -6,47 +6,88 @@
 \author{Amalio}
 \date{\today}
 \begin{document}
-    \maketitle
-    \tableofcontents
-    \section[Idea]{Intraducción a la idea}
-    \paragraph{}
-    La idea tecnológica de este proyecto es construir una web,
-    que a la vez sea instalable en el móvil (PWA) con funciones de notificación,
-    base de datos y usando la librería de componentes de Material UI, inspirada en la filosofía
-    Material Design desarrollado por Google.
-    \paragraph{}
-    Aparte de esto, la idea general es construir una web/app 
-    totalmente útil para difundir la información relevante de clase, 
-    así como fechas de exámenes y tareas.
-    \section[Tecnologías]{Tecnologías a usar}
-    \subsection[Next Js]{NextJs(React)}
-    \paragraph{}
-    Esta web/app estará básicamente construida en\\ NextJs (12)
-     de Vercel, que trabaja sobre React (18) 
-    creado y mantenido por Meta (Facebook).Este 
-    framework nos permitirá ahorra tiempo de carga gracias a su
-    renderizado desde el servidor (SSR) y a su arquitectura de 
-    una sola página (SPA) lo que dará dinamismo.
-    \subsection[Next-PWA]{next-pwa}
-    \paragraph{}
-    Next-Pwa es un módulo npm de javascript específico para NextJs que nos 
-    permitirá crear la PWA de forma muy rápida, sencilla y sin mucha configuración extra.
-    \subsection[Web-Push]{web-push}
-    \paragraph{}
-    Este también es un módulo de javascript enfocado a manejar las notificaciones emergentes o "push" 
-    que envía la web al dispositivo.Gracias a este módulo, conseguiremos eso usando la api interna del 
-    navegador, sin tener que usar ningún servicio externo.
-    \subsection[MongoDB]{MongoDB}
-    \paragraph{}
-    También hemos comentado que usaremos una base de datos, en este caso es MongoDB aunque 
-    no se descartaría usar una que sea SQL como Postgres (Supabase).
-    \subsection[Mongoose]{Mongoose}
-    \paragraph{}
-    Otro módulo npm que sirve para manejar MongoDB con sus drivers sin tener que hacerlo 
-    nosotros mismos y así simplificarlo todo.
-    \subsection[MUI]{Materila UI}
-    \paragraph{}
-    Esta librería de interfaces de usuario para React,\\ basada en la idea del Material Design 
-    dará una apariencia similar a las apps de google y por tanto más familiar y conocida.
+\maketitle
+\tableofcontents
+\section[Idea]{Intraducción a la idea}
+\paragraph{}
+La idea tecnológica de este proyecto es construir una web,
+que a la vez sea instalable en el móvil (PWA) con funciones de notificación,
+base de datos y usando la librería de componentes de Material UI, inspirada en la filosofía
+Material Design desarrollado por Google.
+\paragraph{}
+Aparte de esto, la idea general es construir una web/app
+totalmente útil para difundir la información relevante de clase,
+así como fechas de exámenes y tareas.
+\section[Tecnologías]{Tecnologías a usar}
+\subsection[Next Js]{NextJs(React)}
+\paragraph{}
+Esta web/app estará básicamente construida en\\ NextJs (12)
+de Vercel, que trabaja sobre React (18)
+creado y mantenido por Meta (Facebook).Este
+framework nos permitirá ahorra tiempo de carga gracias a su
+renderizado desde el servidor (SSR) y a su arquitectura de
+una sola página (SPA) lo que dará dinamismo.
+\subsection[Next-PWA]{next-pwa}
+\paragraph{}
+Next-Pwa es un módulo npm de javascript específico para NextJs que nos
+permitirá crear la PWA de forma muy rápida, sencilla y sin mucha configuración extra.
+\subsection[Web-Push]{web-push}
+\paragraph{}
+Este también es un módulo de javascript enfocado a manejar las notificaciones emergentes o "push"
+que envía la web al dispositivo.Gracias a este módulo, conseguiremos eso usando la api interna del
+navegador, sin tener que usar ningún servicio externo.
+\subsection[MongoDB]{MongoDB}
+\paragraph{}
+También hemos comentado que usaremos una base de datos, en este caso es MongoDB aunque
+no se descartaría usar una que sea SQL como Postgres (Supabase).
+\subsection[Mongoose]{Mongoose}
+\paragraph{}
+Otro módulo npm que sirve para manejar MongoDB con sus drivers sin tener que hacerlo
+nosotros mismos y así simplificarlo todo.
+\subsection[MUI]{Materila UI}
+\paragraph{}
+Esta librería de interfaces de usuario para React,\\ basada en la idea del Material Design
+dará una apariencia similar a las apps de google y por tanto más familiar y conocida.
+\section[Explicación de funciones]{Explicación de funciones}
+\subsection[Calendario]{Calendario con alertas}
+\paragraph{}
+Para el calendario, tendrá en las fechas que haya examen, un icono arriba a la derecha
+y si hay una tarea habrá otro icono distinto para las tareas. Aparte, al clicar en la fecha
+nos listará las tareas y examenes que hubiera. Aparte, si para el examen quedan menos de dos
+días, esa fecha saldrá en el calendario con un fondo rojo y en el caso de que quede menos de
+un día para una tarea su fondo será naranja.
+\subsection[Tareas]{Tareas}
+\paragraph{}
+Las tareas irán con una descripción corta y un título, aparte indicando la asignatura a la
+que pertenecen y la fecha límite.
+
+\subparagraph{}
+Aparte, a la hora de visualizar las tareas, se podrán añadir comentarios, que irán listados
+con el nombre del comentarista y el comentario como tal.
+\paragraph{Función Adicional}
+También las tareas podrían tener un botón para indicar que se ha hecho y así ver
+el número de personas que las ha hecho, a modo de presión social para hacerla.
+
+\subsection[Notificaciones]{Notificaciones}
+\paragraph{}
+Las notificaciones llegarán con unas vibraciones más continudas si es fecha de examen y más cortas si
+es una tarea. Aparte, dentro de la notificación se indicará en el título si es tarea o exámen y
+en el cuerpo o mensaje de la notificación se indicará cuando es dicha tarea o dicho exámen.
+
+\subsection[Administradores]{Administradores}
+\paragraph{}
+Para los administradores habrá una página especial donde podrán mandar notificaciones o añadir 
+tareas y exámenes a la app. Aparte, cada vez que añadan una tarea o un exámen se mandará una 
+notificación a todos los subscritos.
+
+\subsection[Generales]{Funciones generales}
+\paragraph{borrado dinámico}
+De las tareas y exámenes que ya han pasado, así no se llena la base de datos de 
+archivos innecesarios.
+
+\paragraph{reminder}
+Añadir una notificación automática cuando quede menos de dos días para un examen o un día para
+una tarea.
+
 
 \end{document}
