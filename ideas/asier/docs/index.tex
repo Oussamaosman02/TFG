@@ -299,4 +299,152 @@ Dentro del admin, la interfaz en básica para realizar las acciones necesarias:
     \label{fig:add-encuesta}
  \end{figure}
  \newpage
+ \section[Otras funciones]{Otras funciones}
+ \paragraph{}
+ Ahora paso a listar y más adelante a desarrollar (con algunos ejemplos de código)
+ ciertas funciones implementadas para aclararlas o simplemente resaltarlas.
+ \begin{itemize}
+   \item Cookies
+   \item Notificaciones
+   \item Conexión con la base de datos 
+ \end{itemize}
+ \subsection[Cookies]{Cookies}
+ \paragraph{}
+ El uso de cookies en cualquier web debe ser notificado y es el usuario el que debe 
+ aceptar o denegar, al menos configurar.\\
+ Pero, si es así, ¿por qué no hay una ventanita o botón que te permita aceptar o 
+ denegar las cookies que nuestro sitio usa?\\
+ La respuesta es muy sencilla, ya que esta ley solo aplica a cookies 'de terceros' o
+ cookies no necesarias.\\
+ \paragraph{}
+ Las cookies que usa este sitio son necesarias para el buen funcionamiento implícito 
+ así como para identificar al usuario y sus privilegios.
+ \subsubsection[¿Qué cookies usamos?]{Nuestras Cookies}
+ \paragraph{}
+ El número de cookies varía en función del navegador y rol del usuario, pero 
+ todas pertenecen a estas causas:
+ \paragraph{Service Workers}
+ Los Service Workers o sw son la clave de esta web/app ya que permiten a esta ser web 
+ ser una PWA.Los sw se instalán por defecto en el navegador para garantizar el correcto 
+ funcionamiento tanto de las notificaciones como de que si se llega a instalar la pwa,
+  funcione como una app nativa.\\
+  Para los sw se guardan entre 2 y 4 cookies referentes a los siguientes archivos:
+  \begin{enumerate}
+   \item SW principal: que es el que otorga la PWA
+   \item Sw secundarios: que pueden complementar al principal
+   \item Sw notificaciones: en el cual se registran las notificaciones entrantes y salientes
+   \item Web Manifest: que guarda el estado visual de la PWA: color de fondo, de la barra de navegación,etc...
+  \end{enumerate}
+\paragraph{Cookies de sesión}
+Al identificar el usuario, se guardan cookies de sesión, tanto para el usuario como para los administradores.
+\subparagraph{Usuario}
+Aquí dejo el código donde la llamada a la api hecha por el login, después de comprobar que los parámetros
+paados son verdaros devuelve la cookie de nombre:
+\begin{figure}[ht]
+   \includegraphics[width=\linewidth]{./assets/cookie-usuario.png}
+   \centering
+   \caption{cookie usuario}
+   \label{fig:cookie-usuario}
+\end{figure}
+ \subparagraph{}
+ Esta cookie se usa para persisitir el nombre de usuario a lo largo de la aplicación,
+ ya sea mostrandolo en la barra de navegación como al comentar.\\
+ Aparte, caduca a los 6 meses, el máximo permitido, lo cual cubre el tiempo de clases.
+ \subparagraph{Administrador}
+ LA cookie del administrador tiene la misma utilidad que la del usuario, sirve para 
+ persistir el estado de administrador a lo largo de la aplicación, para mostrarle 
+ el panel de admin en el sidebar y permitirle acceder a él:
+ \begin{figure}[ht]
+   \includegraphics[width=\linewidth]{./assets/cookie-admin.png}
+   \centering
+   \caption{cookie admin}
+   \label{fig:cookie-admin}
+\end{figure}
+\newpage
+\subparagraph{}
+Esta, al igual que la otra, se añade una vez comprobado que el usuario existe en 
+la base de datos y también persiste durante el máximo, 6 meses. Aparte, usa una 
+colección en la base de datos distinta a la que usa la autenticación del usuario.
+\subsection[Notificaciones]{Notificaciones}
+\paragraph{}
+Ya hemos hablado de ellas antes, pero:¿Como funcionan?¿Son seguras?
+\subsubsection{¿Como funcionan?}
+\paragraph{}
+Cuando pulsas el botón de recibir notificaciones en el inicio de /app, 
+el navegador hace una comprobación de que el sw esté activado y que además 
+soporte las notificaciones (por eso el sw específico para ello). 
+Una vez esto, cuando le damos a permitir, el navegador envia una respuesta 
+en formato de objeto, con tres 'claves':
+\begin{itemize}
+   \item endpoint
+   \item p256dh
+   \item auth
+\end{itemize}
+\paragraph{}
+Todo este objeto es único para cada dispositivo y navegador, 
+puedes suscribirte en el mismo móvil desde varios navegadores
+ y estos datos serán totalmente distintos.
+\paragraph{}
+Una vez estás suscrito, el sw permanece 'a la escucha' de notificaciones, una vez se 
+envía una petición desde el servidor, y las claves recibidas concuerda con las que 
+el envió, muestra la notificación con los atributos (título,cuerpo,icono) que se le mandan.
+\subsubsection{¿Son seguras?}
+\paragraph{}
+EN la explicación de las notificaciones he omitido una cosa, 
+y es como identifica quién manda las notificaciones.Bien, para esto se usa 
+criptografía asimétrica, con una clave pública y una clave
+ privada secreta, aparte, por seguridad, también es necesario un email.
+ \paragraph{}
+Una vez tienes estas claves y el email, todos los 'endpoints' que nos devuelve cada 
+navegador cuando alguien se suscribe irán cifrados con nuestras claves y correo.
+\paragraph{}
+Si alguien consiguiese de alguna manera algún endpoint,
+ tendría papel mojado, ya que sin las claves, ambas, 
+ y el email, no sirven de nada.
+ \subsection[Base de Datos]{Conexión con la BD}
+ \paragraph{}
+ La base de datos que usa este proyecto es MongoDB, una bd no sql, distribuida y 
+ paso a explicar algunos aspectos a tener en cuenta.
+ \subsubsection{Seguridad}
+ \paragraph{}
+   La conexión a la base de datos gira entorno a una función, llamada mogoConn.
+   Esta función importa la variable de entorno donde se guarda la url segura y 
+   única que probee mongo, en la cual van las credenciales del usuario con 
+   acceso a la bd.Este usuario tiene permisos de CRUD sobre la bd, y es creado 
+   por el propietario de la base de datos.
+   \begin{figure}[ht]
+      \includegraphics[width=\linewidth]{./assets/mongo-con.png}
+      \centering
+      \caption{mongoConn}
+      \label{fig:mongo-con}
+   \end{figure}
+   \paragraph{}
+   Aparte de esta url segura única para el usuario o usuarios con acceso a la 
+   bd, mongo nos permite decir desde que ips se permite la conexión a la base 
+   de datos, si esto los restringimos solo a la ip que tiene nuestra web, ninguna
+   otra podrá acceder a la base de datos aún teniendo la url segura y la contraseña 
+   y nombre de el usuario propietario de dicha url.
+   \subparagraph{}
+   Cuando hablo de usuarios de la base de datos, me refiero a administradores 
+   de dicha bd, no al rol de usuario o administrador de la web.
+\subsubsection{Conexión}
+\paragraph{}
+La conexión a la base de datos es muy rápida y está implementada 
+para no consumir recursos.
+\paragraph{}
+A lo largo de la app y también en los endpoints, se usa la misma 
+dinámica para conectarse a la bd, y es así:
+\begin{figure}[ht]
+   \includegraphics[width=\linewidth]{./assets/mongo.png}
+   \centering
+   \caption{conexión con mongo}
+   \label{fig:mongo}
+\end{figure}
+\paragraph{¿Qué estoy viendo?}
+Aquí lo más importante es que primero nos conectamos a la bd con mongoConn,
+una vez obtenida dicha conexión, conseguimos las Tareas que necesitamos y 
+las guardamos en una constante. Una vez echo esto, desechamos la conexión cerrandola.
+Después seguimos manejando los datos que ya hemos guardado. Los console.log 
+sirven para ver el estado de nuestra petición, si se ha cerrado correctamente 
+la conexión y para ver el número de peticiones de datos que se hacen.
  \end{document}
