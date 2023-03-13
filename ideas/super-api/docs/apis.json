@@ -1,0 +1,83 @@
+[
+  {
+    "name": "carrefour",
+    "accesible": "si",
+    "tipo": "público",
+    "url": "https://www.carrefour.es",
+    "url_query": "https://www.carrefour.es/?q=lentejas",
+    "scrape": true,
+    "algo": "El scrape no sé si funciona"
+  },
+  {
+    "name": "ahorramas",
+    "accesible": "si",
+    "tipo": "público",
+    "url": "https://www.ahorramas.com",
+    "url_query": "https://www.ahorramas.com/buscador?q=lentejas&search-button=&lang=null",
+    "scrape": true
+  },
+  {
+    "name": "dia",
+    "accesible": "si",
+    "tipo": "público",
+    "url": "https://www.dia.es/compra-online/",
+    "url_query": "https://www.dia.es/compra-online/search?text=lentejas&x=0&y=0",
+    "scrape": true
+  },
+  {
+    "name": "alcampo",
+    "accesible": "si",
+    "tipo": "público",
+    "url": "https://www.alcampo.es/compra-online/",
+    "url_query": "https://www.alcampo.es/compra-online/search/?department=&text=lentejas",
+    "scrape": false
+  },
+  {
+    "name": "eroski",
+    "accesible": "si",
+    "tipo": "público",
+    "url": "https://supermercado.eroski.es",
+    "url_query": "https://supermercado.eroski.es/es/search/results/?q=lentejas&suggestionsFilter=false",
+    "scrape": true
+  },
+  {
+    "name": "hipercor",
+    "accesible": "si",
+    "tipo": "público",
+    "url": "https://www.hipercor.es/supermercado/",
+    "url_query": "https://www.hipercor.es/supermercado/buscar/?term=lentejas&search=text&type_ahead_tab=panel_all",
+    "scrape": true
+  },
+  {
+    "name": "consum",
+    "accesible": "si",
+    "tipo": "público",
+    "url": "https://tienda.consum.es/es",
+    "url_query": "https://tienda.consum.es/es/s/lentejas?orderById=7&page=1",
+    "scrape": false
+  },
+  {
+    "name": "lidl",
+    "accesible": "si",
+    "tipo": "público",
+    "algo": "pero no están todos los productos",
+    "url": "https://www.lidl.es",
+    "url_query": "https://www.lidl.es/es/search?query=lentejas",
+    "scrape": true
+  },
+  {
+    "name": "aldi",
+    "accesible": "si",
+    "tipo": "público",
+    "algo": "pero no están todos los productos",
+    "url": "https://www.aldi.es",
+    "url_query": "https://www.aldi.es/busqueda.html?query=lentejas&searchCategory=Submitted%20Search",
+    "scrape": false
+  },
+  {
+    "name": "mercadona",
+    "accesible": "si",
+    "tipo": "requiere autenticación",
+    "url": "https://www.telecompra.mercadona.es/ns/principal.php"
+  }
+]
