@@ -77,7 +77,10 @@
   {
     "name": "mercadona",
     "accesible": "si",
-    "tipo": "requiere autenticación",
-    "url": "https://www.telecompra.mercadona.es/ns/principal.php"
+    "tipo": "público",
+    "url": "https://tienda.mercadona.es/api/categories",
+    "algo": "Necesitas consultar el sitemap y ya buscar la id de los productos",
+    "scrape": false,
+    "url_query": "https://tienda.mercadona.es/sitemap.xml"
   }
 ]
